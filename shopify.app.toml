@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "e19b3be724ff844386b01539b26bb69d"
+name = "SEO App"
+handle = "seo-app-24"
+application_url = "https://importance-aware-greensboro-smithsonian.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "workingstore-1212.myshopify.com"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,write_products"
+
+[auth]
+redirect_urls = [
+  "https://importance-aware-greensboro-smithsonian.trycloudflare.com/auth/callback",
+  "https://importance-aware-greensboro-smithsonian.trycloudflare.com/auth/shopify/callback",
+  "https://importance-aware-greensboro-smithsonian.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-07"
+
+[pos]
+embedded = false
