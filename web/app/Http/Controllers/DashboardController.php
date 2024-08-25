@@ -31,6 +31,7 @@ class DashboardController extends Controller
                     'success' => true,
                     'subscribed'=>$subscribed,
                     'billing_url'=>$billing_url,
+                    'shopname'=>$shop->shop,
 
 
                 ];

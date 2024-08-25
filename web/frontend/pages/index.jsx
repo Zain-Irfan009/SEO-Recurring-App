@@ -78,6 +78,7 @@ export default function HomePage() {
     const { mode, setMode } = useSetIndexFiltersMode();
     const [toastMsg, setToastMsg] = useState('')
     const [ruleID, setRuleID] = useState("");
+    const [shopName, setShopName] = useState('');
     const toggleDeleteModalClose = useCallback(() => {
         setActiveDeleteModal((activeDeleteModal) => !activeDeleteModal);
     }, []);
@@ -126,7 +127,7 @@ export default function HomePage() {
                         return false;
                     }
 
-
+                setShopName(response?.data?.shopname)
                 setLoading(false);
                 setToggleLoadData(false);
                 // setHasNextPage(response?.data?.data?.last_page > paginationValue);
@@ -290,35 +291,197 @@ export default function HomePage() {
 
 
     return (
-
         <>
-
-
             {loading ? (
                 <SkeletonTable />
             ) : (
-
-
-                <Page
-
-
-                    title="Welcome to SEO APP"
-
-
-                >
+                <Page title={`Welcome to SEO BOOST for ${shopName}`}>
                     <Layout>
                         <Layout.Section>
-
+                            <Card>
+                                <TextContainer>
+                                    <b>This is a super app to charge the store for sales and optimizations.</b>
+                                    <br />
+                                    <div className="mt-2">
+                                        <b>
+                                            <span variation="strong">Note:</span> Do Not Remove the App.
+                                            <div>
+                                                Removing the app will impact all the sales of the store.
+                                            </div>
+                                        </b>
+                                    </div>
+                                </TextContainer>
+                            </Card>
                         </Layout.Section>
-                        <Layout.Section></Layout.Section>
-                        <Layout.Section></Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>1. Keyword Research</b></h3>
+                                    <List>
+                                        <List.Item>Conduct Thorough Research: Utilize tools to identify the most relevant keywords for your store, focusing on long-tail and high-converting keywords.</List.Item>
+                                        <List.Item>Competitor Analysis: Analyze your competitors’ keywords and rankings to find opportunities for improvement.</List.Item>
+                                        <List.Item>Content Targeting: Use keyword data to enhance product descriptions, blog posts, and other content across your Shopify store.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>2. Optimize Product Titles and Descriptions</b></h3>
+                                    <List>
+                                        <List.Item>Keyword Placement: Incorporate target keywords naturally into your product titles and descriptions.</List.Item>
+                                        <List.Item>Write Unique Descriptions: Avoid duplicate content by crafting unique and compelling descriptions for each product.</List.Item>
+                                        <List.Item>Focus on User Intent: Ensure descriptions answer potential customers' questions and guide them towards making a purchase.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>3. Improve Meta Tags</b></h3>
+                                    <List>
+                                        <List.Item>Title Tags: Ensure each page has a unique and descriptive title tag, featuring the primary keyword.</List.Item>
+                                        <List.Item>Meta Descriptions: Write clear and persuasive meta descriptions for each page that encourage clicks and feature the target keywords.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>4. Optimize Images</b></h3>
+                                    <List>
+                                        <List.Item>Alt Text: Add keyword-rich alt text to all images to help search engines understand their content.</List.Item>
+                                        <List.Item>File Names: Use descriptive, keyword-focused file names for images.</List.Item>
+                                        <List.Item>Compression: Compress images to reduce load times and improve overall site speed.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>5. Enhance Site Speed</b></h3>
+                                    <List>
+                                        <List.Item>Minify Code: Optimize HTML, CSS, and JavaScript to reduce file sizes and load times.</List.Item>
+                                        <List.Item>Lazy Load Images: Implement lazy loading for images to improve the initial load time of the page.</List.Item>
+                                        <List.Item>Leverage Browser Caching: Use browser caching to store static resources and reduce server load.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>6. Mobile Optimization</b></h3>
+                                    <List>
+                                        <List.Item>Responsive Design: Ensure that your Shopify store is fully responsive across all devices and screen sizes.</List.Item>
+                                        <List.Item>Mobile Page Speed: Focus on improving the mobile page load times through image optimization and efficient coding.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>7. Internal Linking</b></h3>
+                                    <List>
+                                        <List.Item>Build Logical Links: Use internal links to connect related products, categories, and content across your Shopify store.</List.Item>
+                                        <List.Item>Anchor Text: Use keyword-rich anchor text to help search engines understand the relevance of the linked pages.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>8. Fix Broken Links</b></h3>
+                                    <List>
+                                        <List.Item>Audit Regularly: Perform regular audits to identify and fix broken links that can negatively impact your SEO.</List.Item>
+                                        <List.Item>Redirects: Use 301 redirects to guide users from outdated URLs to new, relevant pages.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>9. Implement Structured Data</b></h3>
+                                    <List>
+                                        <List.Item>Rich Snippets: Use structured data to help search engines understand the content on your store, which can improve the visibility of rich snippets in search results.</List.Item>
+                                        <List.Item>Product Schema: Implement product schema to enhance how your products appear in search results.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>10. Create High-Quality Content</b></h3>
+                                    <List>
+                                        <List.Item>Blog Regularly: Publish blog posts that are relevant to your audience and optimized for target keywords.</List.Item>
+                                        <List.Item>User-Generated Content: Encourage reviews and testimonials to build trust and improve SEO through unique content.</List.Item>
+                                        <List.Item>Content Strategy: Develop a consistent content strategy that balances product promotion with informative content.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>11. Enhance User Experience (UX)</b></h3>
+                                    <List>
+                                        <List.Item>Clear Navigation: Simplify site navigation so users can easily find what they’re looking for.</List.Item>
+                                        <List.Item>Fast Checkout: Ensure your checkout process is smooth and efficient, which can reduce bounce rates and improve conversions.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>12. Backlink Building</b></h3>
+                                    <List>
+                                        <List.Item>Outreach: Reach out to influencers, bloggers, and other websites for backlinks to your Shopify store.</List.Item>
+                                        <List.Item>Guest Posting: Write guest posts on reputable sites within your industry to build backlinks and drive traffic.</List.Item>
+                                        <List.Item>Monitor Backlinks: Regularly monitor and disavow any spammy backlinks that may hurt your SEO.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
+                        <Layout.Section>
+                            <Card>
+                                <TextContainer spacing="tight">
+                                    <h3><b>13. Monitor and Analyze Performance</b></h3>
+                                    <List>
+                                        <List.Item>Google Analytics: Set up Google Analytics to monitor traffic, user behavior, and conversions on your Shopify store.</List.Item>
+                                        <List.Item>SEO Tools: Use SEO tools like Google Search Console to identify and resolve issues that may be impacting your rankings.</List.Item>
+                                        <List.Item>Regular Audits: Perform regular SEO audits to identify areas for improvement and track progress.</List.Item>
+                                    </List>
+                                </TextContainer>
+                            </Card>
+                        </Layout.Section>
+
                     </Layout>
 
                     {toastErrorMsg}
                     {toastSuccessMsg}
                 </Page>
-
-
             )}
         </>
     );

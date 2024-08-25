@@ -16,8 +16,8 @@ export default function App() {
   const pages = import.meta.globEager("./pages/**/!(*.test.[jt]sx)*.([jt]sx)");
   const { t } = useTranslation();
 
-    // const apiUrl = "https://phpstack-1317662-4812480.cloudwaysapps.com/api/";
-    const apiUrl = "http://seo-recurring.test/api/";
+    const apiUrl = "https://phpstack-1319902-4823626.cloudwaysapps.com/api/";
+    // const apiUrl = "http://seo-recurring.test/api/";
   return (
     <PolarisProvider>
       <BrowserRouter>

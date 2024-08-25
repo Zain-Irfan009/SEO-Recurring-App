@@ -194,7 +194,7 @@ class PlanController extends Controller
 
         }
 
-        return redirect("https://admin.shopify.com/store/".explode('.myshopify.com',$shop->shop)[0]."/apps/seo-app-24");
+        return redirect("https://admin.shopify.com/store/".explode('.myshopify.com',$shop->shop)[0]."/apps/seo-app-25");
     }
 
     public function check_app_active_plan($shop)
