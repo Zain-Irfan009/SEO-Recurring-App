@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return "Hello API";
 });
+Route::get('32', [\App\Http\Controllers\ProductController::class, 'ProductsSync']);
 Route::group(['middleware' => ['shopify.auth']], function () {
 
 
     Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'index']);
+    Route::post('update-products', [\App\Http\Controllers\ProductController::class, 'UpdateProducts']);
 
 
 });
@@ -38,5 +40,46 @@ Route::post('/webhooks/app-uninstall', function (Request $request) {
         $shop->forceDelete();
 
     } catch (\Exception $e) {
+    }
+});
+
+//Product Webhook
+Route::post('/webhooks/product-create', function (Request $request) {
+    try {
+
+        $product=json_decode($request->getContent());
+        $shop=$request->header('x-shopify-shop-domain');
+        $shop=\App\Models\Session::where('shop',$shop)->first();
+        \App\Jobs\ProductWebhookJob::dispatch($product,$shop);
+
+    } catch (\Exception $e) {
+
+    }
+});
+
+Route::post('/webhooks/product-update', function (Request $request) {
+    try {
+
+        $product=json_decode($request->getContent());
+
+        $shop=$request->header('x-shopify-shop-domain');
+        $shop=\App\Models\Session::where('shop',$shop)->first();
+        \App\Jobs\ProductWebhookJob::dispatch($product,$shop);
+
+    } catch (\Exception $e) {
+
+    }
+});
+
+Route::post('/webhooks/product-delete', function (Request $request) {
+    try {
+        $product=json_decode($request->getContent());
+        $shop=$request->header('x-shopify-shop-domain');
+        $shop=\App\Models\Session::where('shop',$shop)->first();
+        $product_controller=new \App\Http\Controllers\ProductController();
+        $product_controller->DeleteProduct($product,$shop);
+
+    } catch (\Exception $e) {
+
     }
 });

@@ -3,7 +3,7 @@
 client_id = "e19b3be724ff844386b01539b26bb69d"
 name = "SEO App"
 handle = "seo-app-24"
-application_url = "https://importance-aware-greensboro-smithsonian.trycloudflare.com"
+application_url = "https://thus-silicon-stereo-phantom.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://importance-aware-greensboro-smithsonian.trycloudflare.com/auth/callback",
-  "https://importance-aware-greensboro-smithsonian.trycloudflare.com/auth/shopify/callback",
-  "https://importance-aware-greensboro-smithsonian.trycloudflare.com/api/auth/callback"
+  "https://thus-silicon-stereo-phantom.trycloudflare.com/auth/callback",
+  "https://thus-silicon-stereo-phantom.trycloudflare.com/auth/shopify/callback",
+  "https://thus-silicon-stereo-phantom.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

@@ -64,7 +64,14 @@ Route::get('/api/auth/callback', function (Request $request) {
     $host = $request->query('host');
     $shop = Utils::sanitizeShopDomain($request->query('shop'));
 
+    $user=Session::where('shop',$shop)->first();
+    \App\Jobs\ProductJob::dispatch($user);
+
     $response = Registry::register('/api/webhooks/app-uninstall', Topics::APP_UNINSTALLED, $shop, $session->getAccessToken());
+    $response_products_create = Registry::register('/api/webhooks/product-create', Topics::PRODUCTS_CREATE, $shop, $session->getAccessToken());
+    $response_product_update = Registry::register('/api/webhooks/product-update', Topics::PRODUCTS_UPDATE, $shop, $session->getAccessToken());
+    $response_product_delete = Registry::register('/api/webhooks/product-delete', Topics::PRODUCTS_DELETE, $shop, $session->getAccessToken());
+
     if ($response->isSuccess()) {
         Log::debug("Registered APP_UNINSTALLED webhook for shop $shop");
     } else {

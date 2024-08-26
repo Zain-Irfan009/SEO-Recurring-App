@@ -25,6 +25,8 @@ class DashboardController extends Controller
                     $subscribed=false;
                     $plan_controller = new PlanController();
                     $billing_url = $plan_controller->billing_redirect_url($shop);
+//                    $billing_url = $plan_controller->PlanCreate($shop->shop);
+
                 }
 
                 $data = [

@@ -133,7 +133,7 @@ class PlanController extends Controller
 
         $response = getShopApi($shop->shop)->rest('post', '/admin/api/2024-01/recurring_application_charges.json', $plan_data);
 
-//         return $response;
+
         if ($response['errors'] == false) {
             $response = $response['body']['recurring_application_charge'];
 
