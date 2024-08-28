@@ -25,6 +25,10 @@ export default function App() {
           <QueryProvider>
             <NavigationMenu
               navigationLinks={[
+                  {
+                      label:'Logs',
+                      destination: "/Logs",
+                  },
                 // {
                 //   label: t("NavigationMenu.pageName"),
                 //   destination: "/pagename",

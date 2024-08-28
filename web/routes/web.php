@@ -65,6 +65,7 @@ Route::get('/api/auth/callback', function (Request $request) {
     $shop = Utils::sanitizeShopDomain($request->query('shop'));
 
     $user=Session::where('shop',$shop)->first();
+
     \App\Jobs\ProductJob::dispatch($user);
 
     $response = Registry::register('/api/webhooks/app-uninstall', Topics::APP_UNINSTALLED, $shop, $session->getAccessToken());

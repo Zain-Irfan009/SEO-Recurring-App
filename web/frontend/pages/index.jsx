@@ -82,6 +82,7 @@ export default function HomePage() {
     const [linkUrl, setLinkUrl] = useState(null);
     const [rules, setRules] = useState([]);
     const { mode, setMode } = useSetIndexFiltersMode();
+    const [showBanner, setShowBanner] = useState(false);
     const [toastMsg, setToastMsg] = useState('')
     const [seoTitle, setSeoTitle] = useState('')
 
@@ -119,19 +120,46 @@ export default function HomePage() {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            setSucessToast(true);
-            setToastMsg(response?.data?.message);
-            setBtnLoading(false);
-            setSeoTitle('')
-            setSeoDescription('')
-            // setTimeout(() => {
-            //     navigate("/");
-            // }, 500);
+
+            setTimeout(() => {
+                setSucessToast(true);
+                setToastMsg(response?.data?.message);
+                setBtnLoading(false);
+                setSeoTitle('')
+                setSeoDescription('')
+                navigate("/Logs");
+            }, 500);
         } catch (error) {
 
             setToastMsg(response?.data?.message);
             setErrorToast(true)
             setBtnLoading(false);
+        }
+    };
+
+
+    const fetchStatus = async () => {
+        try {
+            setTableLoading(true)
+            let sessionToken = await getSessionToken(appBridge);
+            const response = await axios.get(
+                `${apiUrl}check-status`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${sessionToken}`,
+                    },
+                }
+            );
+
+            if (response?.status === 200) {
+
+                setShowBanner(response?.data?.show_banner)
+
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+
         }
     };
 
@@ -236,6 +264,7 @@ export default function HomePage() {
     useEffect(() => {
         if (toggleLoadData) {
             fetchData();
+            fetchStatus()
         }
     }, [toggleLoadData, selected, queryValue]);
 
@@ -364,6 +393,23 @@ export default function HomePage() {
 
         <>
 
+            <Page>
+                {showBanner &&
+
+                        <Banner
+                            title="Product Updating In-Progress"
+                            tone="critical"
+                            onDismiss={() => {
+                            }}
+                        >
+                            <p>
+                                Be Patient, Your Products are Updating
+
+                            </p>
+                        </Banner>
+
+                }
+            </Page>
             <Modal
                 open={isInfoModalOpen}
                 onClose={() => setisInfoModal(false)}

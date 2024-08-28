@@ -27,7 +27,7 @@ class CreateProductsTable extends Migration
             $table->longText('options')->nullable();
             $table->string('status')->nullable();
             $table->longText('published_at')->nullable();
-            $table->boolean('seo_update')->nullable();
+            $table->boolean('seo_update')->default(0);
             $table->timestamps();
         });
     }

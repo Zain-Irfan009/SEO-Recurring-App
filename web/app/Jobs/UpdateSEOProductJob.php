@@ -19,6 +19,7 @@ class UpdateSEOProductJob implements ShouldQueue
     public $shop;
     public $seo_title;
     public $seo_description;
+    public $log_id;
 
     public $timeout = 100000;
     /**
@@ -26,11 +27,12 @@ class UpdateSEOProductJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($shop,$seo_title,$seo_description)
+    public function __construct($shop,$seo_title,$seo_description,$log_id)
     {
         $this->shop=$shop;
         $this->seo_title=$seo_title;
         $this->seo_description=$seo_description;
+        $this->log_id=$log_id;
     }
 
     /**
@@ -42,6 +44,6 @@ class UpdateSEOProductJob implements ShouldQueue
     {
         $user=Session::first();
         $productController=new ProductController();
-        $productController->UpdateAllProducts($this->shop,$this->seo_title,$this->seo_description);
+        $productController->UpdateAllProducts($this->shop,$this->seo_title,$this->seo_description,$this->log_id);
     }
 }

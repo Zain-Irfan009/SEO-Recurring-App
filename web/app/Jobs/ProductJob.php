@@ -35,7 +35,7 @@ class ProductJob implements ShouldQueue
      */
     public function handle()
     {
-        $user=Session::first();
+        $user=$this->user;
         $productController=new ProductController();
         $productController->syncProducts($user);
     }
